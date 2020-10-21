@@ -9,7 +9,9 @@
   "dependencies": {
     "egg": "^2.15.1",
     "egg-cors": "^2.2.3",
-    "egg-scripts": "^2.11.0"
+    "egg-scripts": "^2.11.0",
+    "egg-sequelize": "^6.0.0",
+    "mysql2": "^2.2.5"
   },
   "devDependencies": {
     "autod": "^3.0.1",
@@ -18,7 +20,8 @@
     "egg-ci": "^1.11.0",
     "egg-mock": "^3.21.0",
     "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0"
+    "eslint-config-egg": "^7.1.0",
+    "sequelize-cli": "^6.2.0"
   },
   "engines": {
     "node": ">=10.0.0"
