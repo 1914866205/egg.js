@@ -36,15 +36,11 @@ module.exports = appInfo => {
 		origin: '*',
 		allowMethods: 'GET, PUT, POST, DELETE, PATCH'
 	};
-	return {
-		...config,
-		...userConfig,
-	};
 	config.sequelize = {
 		dialect: 'mysql',
 		host: '127.0.0.1',
 		username: "root",
-		password: 'root',
+		password: "root",
 		port: 3306,
 		database: 'test_egg',
 		// 中国时区
@@ -63,4 +59,15 @@ module.exports = appInfo => {
 			underscored: true
 		}
 	};
+	config.valparams = {
+		locale: 'zh-cn',
+		throwError: true,
+	};
+	config.crypto = {
+	    secret:  'qhdgw@45ncashdaksh2!#@3nxjdas*_672'
+	};
+	return {
+		...config,
+		...userConfig,
+	}
 };
