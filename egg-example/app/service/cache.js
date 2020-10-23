@@ -10,7 +10,7 @@ class CacheService extends Service{
 	 */
 	async getList(key,isChildObject =false){
 		const {redis}=this.app;
-		lat data=await redis.lrange(key,0,-1);
+		let data=await redis.lrange(key,0,-1);
 		if(isChildObject){
 			data=data.map((item)=>{
 				return JSON.parse(item)
@@ -70,7 +70,7 @@ class CacheService extends Service{
 	async get(key){
 		const {redis}=this.app
 		const result =await redis.get(key)
-		retrun JSON.parse(result)
+		return JSON.parse(result)
 	}
 	
 	
@@ -91,7 +91,7 @@ class CacheService extends Service{
 	 * 查询长度
 	 */
 	async strlen(key){
-		const {redis} =this.app,
+		const {redis} =this.app
 		return await redis.strlen(key)
 	}
 	

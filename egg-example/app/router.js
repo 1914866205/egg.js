@@ -12,4 +12,6 @@ module.exports = app => {
 	router.get("/list", controller.home.list);
 	// 用户注册
 	router.post("/reg", controller.user.reg);
+	//用户登录
+	router.post("/login", controller.user.login);
 };
