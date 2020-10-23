@@ -66,6 +66,16 @@ module.exports = appInfo => {
 	config.crypto = {
 	    secret:  'qhdgw@45ncashdaksh2!#@3nxjdas*_672'
 	};
+	//redis存储
+	config.redis={
+		client:{
+			port:6379,
+			host:'127.0.0.1',
+			password:'',
+			db:1,
+		}
+	}
+	
 	return {
 		...config,
 		...userConfig,
