@@ -16,8 +16,12 @@ module.exports = appInfo => {
 	config.keys = appInfo.name + '_1603250442197_570';
 
 	// add your middleware config here
-	config.middleware = ["errorHandler"];
+	config.middleware = ["errorHandler",'auth'];
 
+//这些端点的请求需要token鉴权
+config.auth={
+	match:['/logout','upload','/getSize','/file','/share']
+}
 	// add your user config here
 	const userConfig = {
 		// myAppName: 'egg',
