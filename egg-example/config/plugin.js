@@ -21,5 +21,9 @@ module.exports = {
   jwt:{
 	  enable:true,
 	  package:'egg-jwt',
+  },
+  oss: {
+	  enable:true,
+	  package:'egg-oss',
   }
 };

@@ -16,4 +16,7 @@ module.exports = app => {
 	router.post("/login", controller.user.login);
 	//退出登录
 	router.post('/logout',controller.user.logout);
+	//下载
+	router.post('/upload',controller.file.upload);
+
 };

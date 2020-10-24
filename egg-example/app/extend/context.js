@@ -16,9 +16,7 @@ module.exports = {
   },
   // 生成唯一ID
   genID(length) {
-    return Number(
-      Math.random().toString().substr(3, length) + Date.now()
-    ).toString(36);
+    return Number(Math.random().toString().substr(3, length) + Date.now()).toString(36);
   },
   // 是否是移动端访问
   ismobile() {

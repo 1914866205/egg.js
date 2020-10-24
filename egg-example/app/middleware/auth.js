@@ -4,6 +4,7 @@ module.exports = (option, app) => {
   return async (ctx, next) => {
     // 1. 获取 header 头token
     const { token } = ctx.header;
+	console.log('token'+token)
     if (!token) {
       ctx.throw(400, '没有权限访问该接口!');
     }
@@ -32,7 +33,7 @@ module.exports = (option, app) => {
         id: user.id,
       },
     });
-
+console.log('根据token得到的用户信息'+user)
     if (!user) {
       ctx.throw(400, '当前用户不存在！');
     }
