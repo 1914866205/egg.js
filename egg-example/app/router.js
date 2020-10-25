@@ -30,4 +30,9 @@ module.exports = app => {
 	router.post('/file/delete', controller.file.delete);
 	//查找文件
 	router.get('/file/search', controller.file.search);
+	//创建分享
+	router.post('/share/create', controller.share.create);
+	//查找用户分享列表
+	router.get('/share/list', controller.share.list);
+
 };
