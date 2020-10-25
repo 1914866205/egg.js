@@ -18,5 +18,6 @@ module.exports = app => {
 	router.post('/logout',controller.user.logout);
 	//下载
 	router.post('/upload',controller.file.upload);
-
+	//剩余容量
+	router.get('/getsize',controller.user.getSize);
 };
