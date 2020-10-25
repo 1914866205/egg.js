@@ -15,14 +15,15 @@ module.exports = app => {
 	//用户登录
 	router.post("/login", controller.user.login);
 	//退出登录
-	router.post('/logout',controller.user.logout);
+	router.post('/logout', controller.user.logout);
 	//下载
-	router.post('/upload',controller.file.upload);
+	router.post('/upload', controller.file.upload);
 	//剩余容量
-	router.get('/getsize',controller.user.getSize);
+	router.get('/getsize', controller.user.getSize);
 	//文件列表
-	router.get('/file',controller.file.list);
+	router.get('/file', controller.file.list);
 	//创建文件夹
-	router.post('/file/createdir',controller.file.createdir);
-	
+	router.post('/file/createdir', controller.file.createdir);
+	//文件/文件夹 重命名
+	router.post('/file/rename', controller.file.rename);
 };

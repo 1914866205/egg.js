@@ -60,6 +60,54 @@ class FileController extends Controller {
 		})
 	}
 
+	//重命名
+	async rename() {
+		const {
+			ctx,
+			app
+		} = this
+		const user_id = ctx.authUser.id
+
+		ctx.validate({
+			id: {
+				require: true,
+				type: 'int',
+				desc: '记录',
+			},
+			file_id: {
+				required: true,
+				type: 'int',
+				defValue: 0,
+				desc: '目录id',
+			},
+			name: {
+				required: true,
+				type: 'string',
+				desc: '文件名称',
+			}
+		})
+
+		//接收请求参数
+		let {
+			id,
+			file_id,
+			name
+		} = ctx.request.body
+
+		//验证目录id是否存在
+		if (file_id > 0) {
+			await this.service.file.isDirExist(file_id)
+		}
+		//文件是否存在
+		let f = await this.service.file.isExist(id)
+		f.name = name
+		let res = await f.save()
+		ctx.apiSuccess(res)
+	}
+
+
+
+
 
 
 	//创建文件夹
