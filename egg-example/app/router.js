@@ -22,4 +22,7 @@ module.exports = app => {
 	router.get('/getsize',controller.user.getSize);
 	//文件列表
 	router.get('/file',controller.file.list);
+	//创建文件夹
+	router.post('/file/createdir',controller.file.createdir);
+	
 };
