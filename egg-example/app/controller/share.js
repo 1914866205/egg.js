@@ -41,24 +41,24 @@ class ShareController extends Controller {
 		ctx.apiSuccess('分享链接:' + url)
 	}
 
-	// //我的分享列表
-	// async list() {
-	// 	const {
-	// 		ctx,
-	// 		app
-	// 	} = this
-	// 	const user_id = ctx.authUser.id
+	//我的分享列表
+	async list() {
+		const {
+			ctx,
+			app
+		} = this
+		const user_id = ctx.authUser.id
 
-	// 	let list = await app.model.Share.findAndCountAll({
-	// 		where: {
-	// 			user_id,
-	// 		},
-	// 		include: [{
-	// 			model: app.model.File,
-	// 		}]
-	// 	})
-	// 	ctx.apiSuccess(list)
-	// }
+		let list = await app.model.Share.findAndCountAll({
+			where: {
+				user_id,
+			},
+			include: [{
+				model: app.model.File,
+			}]
+		})
+		ctx.apiSuccess(list)
+	}
 
 
 
