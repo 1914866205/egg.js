@@ -151,13 +151,41 @@ class FileController extends Controller {
 			crx.authUser.save();
 		}
 		ctx.apiSuccess(res);
+	}
 
+	//搜索文件
+	async search() {
+		const {
+			ctx,
+			app
+		} = this;
+		const user_id = ctx.authUser.id;
+		ctx.validate({
+			keyword: {
+				keyword: {
+					required: true,
+					type: 'string',
+					desc: "关键字"
+				}
+			},
+		})
 
-
-
-
-
-
+		let {
+			keyword
+		} = ctx.query
+		const Op = app.Sequelize.Op
+		let rows = await app.model.File.findAll({
+			where: {
+				name: {
+					[Op.like]: `%${keyword}%`
+				},
+				isdir: 0,
+				user_id
+			}
+		})
+		ctx.apiSuccess({
+			rows
+		})
 
 
 
@@ -176,8 +204,6 @@ class FileController extends Controller {
 
 
 	}
-
-
 
 
 

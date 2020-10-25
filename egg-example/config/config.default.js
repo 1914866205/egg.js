@@ -20,7 +20,7 @@ module.exports = appInfo => {
 
 	//这些端点的请求需要token鉴权
 	config.auth = {
-		match: ['/logout', '/getsize', '/file', '/share','/upload','/rename']
+		match: ['/logout', '/getsize', '/file', '/share','/upload','/rename','/search']
 	}
 	// add your user config here
 	const userConfig = {
