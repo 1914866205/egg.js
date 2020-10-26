@@ -55,6 +55,9 @@ class FileController extends Controller {
 				[orderby, 'desc'],
 			]
 		})
+		rows.map(item=>{
+		console.log('排序顺序'+item.name)
+		})
 		ctx.apiSuccess({
 			rows,
 		})
