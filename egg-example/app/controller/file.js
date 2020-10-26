@@ -56,7 +56,7 @@ class FileController extends Controller {
 			]
 		})
 		rows.map(item=>{
-		console.log('排序顺序'+item.name)
+		// console.log('排序顺序'+item.name)
 		})
 		ctx.apiSuccess({
 			rows,
@@ -233,6 +233,7 @@ class FileController extends Controller {
 
 	// 上传
 	async upload() {
+		console.log("上传接口：")
 		const {
 			ctx,
 			app,
@@ -264,8 +265,8 @@ class FileController extends Controller {
 		//取得上传的文件对象
 		const file = ctx.request.files[0]
 		const file_id = ctx.query.file_id
-		console.log(file_id + '&&&&&&&&&')
-
+		console.log(file + '&&&&&&&&&')
+		
 		//处理传非根目录的情况
 		let prefixPath = ''
 		//根据file_id一直向上找到顶层目录
@@ -279,7 +280,9 @@ class FileController extends Controller {
 		}
 		//动态将目录名称作为前缀和文件名拼接
 		// const name = f.name + '/' + ctx.genID(10) + path.extname(file.filename)
-		const name = prefixPath + ctx.genID(10) - path.extname(file.filename)
+		console.log("file.filename:"+file.filename)
+		const name = prefixPath + ctx.genID(10) + path.extname(file.filename)
+		console.log("name:"+name)
 		// 判断用户网盘内存是否不足
 		let s = await new Promise((resolve, reject) => {
 			fs.stat(file.filepath, (err, stats) => {
@@ -291,6 +294,8 @@ class FileController extends Controller {
 		}
 		// 上传到oss
 		let result
+		console.log("name:"+name)
+		console.log(" file.filepath:"+ file.filepath)
 		try {
 			result = await ctx.oss.put(name, file.filepath)
 		} catch (err) {
