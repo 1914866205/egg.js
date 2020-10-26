@@ -30,6 +30,6 @@ class FileService extends Service {
       return this.ctx.throw(404, '文件不存在')
     }
     return f
-  }
+  }  
 }
 module.exports = FileService
