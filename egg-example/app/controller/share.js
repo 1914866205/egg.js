@@ -36,7 +36,7 @@ class ShareController extends Controller {
 			iscancel: 0,
 			user_id,
 		})
-		let url = 'http:/127.0.0.1:7001/sharepage/' + sharedurl
+		let url = 'http://127.0.0.1:7001/sharepage/' + sharedurl
 		ctx.apiSuccess('分享链接:' + url)
 	}
 
