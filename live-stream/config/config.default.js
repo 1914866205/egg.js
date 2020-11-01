@@ -1,6 +1,8 @@
 /* eslint valid-jsdoc: "off" */
 'use strict'
 
+const NodeMediaServer = require('node-media-server')
+
 /**
  * @param {Egg.EggAppInfo} appInfo app info
  */
@@ -11,23 +13,22 @@ module.exports = (appInfo) => {
    **/
   const config = (exports = {})
 
-
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1604158088886_8645'
 
-
   // add your middleware config here
-  config.middleware = ['errorHandler','auth']
-  config.auth={
-	  match:['/api/live/create']
-  }
+  //定义路由拦截(先定义一个创建直播间的拦截)
+  config.middleware = ['errorHandler', 'auth']
 
+  config.auth = {
+    match: ['/api/live/create'],
+  }
   // add your user config here
   const userConfig = {
     // myAppName: 'egg',
   }
 
-
+  //配置跨越
   config.security = {
     // 关闭 csrf
     csrf: {
@@ -44,7 +45,6 @@ module.exports = (appInfo) => {
     origin: '*',
     allowMethods: 'GET, PUT, POST, DELETE, PATCH',
   }
-
 
   config.sequelize = {
     dialect: 'mysql',
@@ -70,22 +70,18 @@ module.exports = (appInfo) => {
     },
   }
 
-
   config.valparams = {
     locale: 'zh-cn',
     throwError: true,
   }
 
-
   config.crypto = {
     secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
   }
 
-
   config.jwt = {
     secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
   }
-
 
   // redis存储
   config.redis = {
@@ -96,7 +92,7 @@ module.exports = (appInfo) => {
       db: 2,
     },
   }
-  
+
   // 流媒体配置
   config.mediaServer = {
     rtmp: {
@@ -104,18 +100,21 @@ module.exports = (appInfo) => {
       chunk_size: 60000,
       gop_cache: true,
       ping: 30,
-      ping_timeout: 60
+      ping_timeout: 60,
     },
     http: {
       port: 23481,
-      allow_origin: '*'
+      allow_origin: '*',
     },
     auth: {
       play: true,
       publish: true,
       secret: 'nodemedia2017privatekey',
     },
-  };
+  }
+
+  var nms = new NodeMediaServer(config.mediaServer)
+  nms.run()
 
   return {
     ...config,
