@@ -23,5 +23,7 @@ module.exports = app => {
 	router.post('/api/live/changestatus', controller.api.live.changeStatus)
 	//分页获取直播间列表
 	router.post('/api/live/list/:page', controller.api.live.list)
+	//查看指定直播页
+	router.get('/api/live/read/:id', controller.api.live.read)
 	
 };
