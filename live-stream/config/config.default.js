@@ -21,7 +21,7 @@ module.exports = (appInfo) => {
   config.middleware = ['errorHandler', 'auth']
 
   config.auth = {
-    match: ['/api/live/create','/api/live/changestatus','/api/logout'],
+    match: ['/api/live/create','/api/live/changestatus','/api/logout','/api/info'],
   }
   // add your user config here
   const userConfig = {
