@@ -21,4 +21,7 @@ module.exports = app => {
 	router.post('/api/live/create', controller.api.live.save)
 	//修改直播间状态         				     
 	router.post('/api/live/changestatus', controller.api.live.changeStatus)
+	//分页获取直播间列表
+	router.post('/api/live/list/:page', controller.api.live.list)
+	
 };
