@@ -17,6 +17,8 @@ module.exports = app => {
 	router.post('/api/phoneLogin',controller.api.user.phoneLogin)
 	//发送手机验证码
 	router.post('/api/sendcode',controller.api.sms.sendCode)
+	//第三方登录 微信登录试用版
+	router.post('/api/otherlogin',controller.api.user.otherLogin)
 	
 	//获取用户信息
 	router.post('/api/info', controller.api.user.info)

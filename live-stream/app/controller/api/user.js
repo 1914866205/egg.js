@@ -1,9 +1,6 @@
 'use strict'
 
-
 const Controller = require('egg').Controller
-
-
 class UserController extends Controller {
 	// 注册
 	async reg() {
@@ -142,6 +139,51 @@ class UserController extends Controller {
 		}
 		ctx.apiSuccess(user)
 	}
+
+	// 第三方登录
+	async otherLogin() {
+		const {
+			ctx,
+			app
+		} = this
+		// 参数验证
+		ctx.validate({
+			wxid: {
+				type: 'string',
+				required: true,
+				desc: 'wxid',
+			}
+		})
+
+
+		console.log("后端接收")
+		let {
+			wxid
+		} = ctx.request.body
+		console.log("wxid" + wxid)
+		let user = await app.model.User.findOne({
+			where: {
+				wxid,
+			},
+		})
+		console.log("查到的user" + user)
+		if (!user) {
+			ctx.throw(400, '该用户不存在')
+		}
+		// 验证密码
+		user = JSON.parse(JSON.stringify(user))
+		console.log(user)
+		// 生成token
+		user.token = ctx.getToken(user)
+		delete user.password
+		// 加入到存储中
+		if (!(await this.service.cache.set('user_' + user.id, user.token))) {
+			ctx.throw(400, '登录失败')
+		}
+		ctx.apiSuccess(user)
+	}
+
+
 	// 手机短信登录
 	async phoneLogin() {
 		const {

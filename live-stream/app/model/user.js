@@ -24,14 +24,14 @@ module.exports = (app) => {
 	},
     username: {
       type: STRING(30),
-      allowNull: false,
+      allowNull: true,
       defaultValue: '',
       comment: '用户名',
       unique: true,
     },
     password: {
       type: STRING,
-      allowNull: false,
+      allowNull: true,
       defaultValue: '',
       comment: '密码',
       set(val) {
@@ -49,7 +49,7 @@ module.exports = (app) => {
     },
     coin: {
       type: INTEGER,
-      allowNull: false,
+      allowNull: true,
       defaultValue: 0,
       comment: '金币',
     },
