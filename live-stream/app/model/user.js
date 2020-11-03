@@ -8,6 +8,20 @@ module.exports = (app) => {
       primaryKey: true,
       autoIncrement: true,
     },
+	wxid: {
+		type: STRING(255),
+		allowNull: true,
+		defaultValue: '',
+		comment: '微信openId',
+		unique: true,
+	},
+	phone: {
+		type: STRING(11),
+		allowNull: true,
+		defaultValue: '',
+		comment: '手机号',
+		unique: true,
+	},
     username: {
       type: STRING(30),
       allowNull: false,

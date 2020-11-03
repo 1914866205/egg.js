@@ -1,21 +1,67 @@
-'use strict';
+'use strict'
 
 module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    /**
-     * Add altering commands here.
-     *
-     * Example:
-     * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
-     */
-  },
+	up: (queryInterface, Sequelize) => {
+		const {
+			INTEGER,
+			STRING,
+			DATE,
+			ENUM,
+			TEXT
+		} = Sequelize
+		return queryInterface.createTable('user', {
+			id: {
+				type: INTEGER(20),
+				primaryKey: true,
+				autoIncrement: true,
+			},
+			wxid: {
+				type: STRING(255),
+				allowNull: true,
+				defaultValue: '',
+				comment: '微信openId',
+				unique: true,
+			},
+			phone: {
+				type: STRING(11),
+				allowNull: true,
+				defaultValue: '',
+				comment: '手机号',
+				unique: true,
+			},
 
-  down: async (queryInterface, Sequelize) => {
-    /**
-     * Add reverting commands here.
-     *
-     * Example:
-     * await queryInterface.dropTable('users');
-     */
-  }
-};
+			username: {
+				type: STRING(30),
+				allowNull: false,
+				defaultValue: '',
+				comment: '用户名',
+				unique: true,
+			},
+			password: {
+				type: STRING,
+				allowNull: false,
+				defaultValue: '',
+				comment: '密码',
+			},
+			avatar: {
+				type: STRING,
+				allowNull: true,
+				defaultValue: '',
+				comment: '头像',
+			},
+			coin: {
+				type: INTEGER,
+				allowNull: false,
+				defaultValue: 0,
+				comment: '金币',
+			},
+			created_time: DATE,
+			updated_time: DATE,
+		})
+	},
+
+
+	down: (queryInterface, Sequelize) => {
+		return queryInterface.dropTable('user')
+	},
+}

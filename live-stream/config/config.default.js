@@ -21,7 +21,7 @@ module.exports = (appInfo) => {
   config.middleware = ['errorHandler', 'auth']
 
   config.auth = {
-    match: ['/api/live/create','/api/live/changestatus','/api/logout','/api/info','/api/live/list/:page','/api/live/read/:id'],
+    match: ['/api/live/create','/api/live/changestatus','/api/logout','/api/info','/api/live/list/:page'],
   }
   // add your user config here
   const userConfig = {
@@ -79,7 +79,7 @@ module.exports = (appInfo) => {
     secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
   }
 
-  config.jwt = {
+  config.jwt = {	
     secret: 'qhdgw@45ncashdaksh2!#@3nxjdas*_672',
   }
 

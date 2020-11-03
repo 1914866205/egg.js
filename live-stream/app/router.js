@@ -13,6 +13,11 @@ module.exports = app => {
 	router.post('/api/reg', controller.api.user.reg)
 	//用户登录
 	router.post('/api/login', controller.api.user.login)
+	//手机验证码登录
+	router.post('/api/phoneLogin',controller.api.user.phoneLogin)
+	//发送手机验证码
+	router.post('/api/sendcode',controller.api.sms.sendCode)
+	
 	//获取用户信息
 	router.post('/api/info', controller.api.user.info)
 	//用户退出登录
@@ -25,5 +30,5 @@ module.exports = app => {
 	router.post('/api/live/list/:page', controller.api.live.list)
 	//查看指定直播页
 	router.get('/api/live/read/:id', controller.api.live.read)
-	
+		
 };

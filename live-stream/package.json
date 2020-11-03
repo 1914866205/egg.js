@@ -7,6 +7,7 @@
     "declarations": true
   },
   "dependencies": {
+    "@alicloud/sms-sdk": "^1.1.6",
     "await-stream-ready": "^1.0.1",
     "crypto": "^1.0.1",
     "dayjs": "^1.9.4",
