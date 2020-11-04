@@ -15,12 +15,12 @@ module.exports = app => {
 	//用户登录
 	router.post('/api/login', controller.api.user.login)
 	//手机验证码登录
-	router.post('/api/phoneLogin',controller.api.user.phoneLogin)
+	router.post('/api/phoneLogin', controller.api.user.phoneLogin)
 	//发送手机验证码
-	router.post('/api/sendcode',controller.api.sms.sendCode)
+	router.post('/api/sendcode', controller.api.sms.sendCode)
 	//第三方登录 微信登录试用版
-	router.post('/api/otherlogin',controller.api.user.otherLogin)
-	
+	router.post('/api/otherlogin', controller.api.user.otherLogin)
+
 	//获取用户信息
 	router.post('/api/info', controller.api.user.info)
 	//用户退出登录
@@ -33,8 +33,9 @@ module.exports = app => {
 	router.post('/api/live/list/:page', controller.api.live.list)
 	//查看指定直播页
 	router.get('/api/live/read/:id', controller.api.live.read)
-	
+
 	//socket路由配置测试
 	// io.of('/').route('test',io.controller.nps.test)
-	io.of('/').route('joinLive',io.controller.live.joinLive)
+	io.of('/').route('joinLive', io.controller.live.joinLive)
+	io.of('/').route('leaveLive', io.controller.live.leaveLive)
 };
