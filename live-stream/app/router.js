@@ -35,5 +35,6 @@ module.exports = app => {
 	router.get('/api/live/read/:id', controller.api.live.read)
 	
 	//socket路由配置测试
-	io.of('/').route('test',io.controller.nps.test)
+	// io.of('/').route('test',io.controller.nps.test)
+	io.of('/').route('joinLive',io.controller.live.joinLive)
 };
