@@ -6,7 +6,8 @@
 module.exports = app => {
 	const {
 		router,
-		controller
+		controller,
+		io
 	} = app;
 	router.get('/', controller.home.index);
 	//用户注册
@@ -32,5 +33,7 @@ module.exports = app => {
 	router.post('/api/live/list/:page', controller.api.live.list)
 	//查看指定直播页
 	router.get('/api/live/read/:id', controller.api.live.read)
-		
+	
+	//socket路由配置测试
+	io.of('/').route('test',io.controller.nps.test)
 };
