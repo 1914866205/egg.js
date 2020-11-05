@@ -38,4 +38,6 @@ module.exports = app => {
 	// io.of('/').route('test',io.controller.nps.test)
 	io.of('/').route('joinLive', io.controller.live.joinLive)
 	io.of('/').route('leaveLive', io.controller.live.leaveLive)
+	io.of('/').route('comment', io.controller.live.comment)
+	
 };

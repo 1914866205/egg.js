@@ -1,6 +1,6 @@
 'use strict'
 const Controller = require('egg').Controller
-class NpsController extends Controller {
+class LiveController extends Controller {
 
 	//加入直播间
 	//验证用户token
@@ -209,13 +209,67 @@ class NpsController extends Controller {
 	}
 
 
+	//直播间发送弹幕
+	async comment() {
+		const {
+			ctx,
+			app,
+			service,
+			helper
+		} = this
+		const nps = app.io.of('/')
+		console.log("直播间发弹幕接口被触发")
+		//接收参数
+		const message = ctx.args[0] || {}
+		//当前连接
+		const socket = ctx.socket
+		const id = socket.id
 
-
-
-
-
-
-
-
+		let {
+			live_id,
+			token,
+			data
+		} = message
+		console.log("message:"+message)
+		console.log("socket:"+socket)
+		console.log("id:"+id)
+		console.log("data:"+data)
+		if (!data) {
+			socket.emit(id, ctx.helper.parseMsg('error', '评论内容不能为空'))
+			return
+		}
+		//验证用户token
+		let user = await this.checkToken(token)
+		console.log("user:"+user)
+		if (!user) {
+			return
+		}
+		//验证当前直播间是否存在或是否直播中
+		let msg = await service.live.checkStatus(live_id)
+		console.log("msg:"+msg)
+		if (msg) {
+			socket.emit(id, ctx.helper.parseMsg('error', msg))
+			return
+		}
+		const room = 'live_' + live_id
+		console.log("room:"+room)
+		//推送消息到直播间
+		nps.to(room).emit('comment', {
+			user: {
+				id: user.id,
+				name: user.nickname || user.username,
+				avatar: user.avatar,
+			},
+			id: ctx.randomString(10),
+			data: data,
+		})	
+		console.log('推送消息'+data+'到直播间')
+		//生成一条comment数据
+		app.model.Comment.create({
+			content: data,
+			live_id,
+			user_id: user.id
+		})
+	}
 }
-module.exports = NpsController
+module.exports = LiveController
