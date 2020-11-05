@@ -33,11 +33,15 @@ module.exports = app => {
 	router.post('/api/live/list/:page', controller.api.live.list)
 	//查看指定直播页
 	router.get('/api/live/read/:id', controller.api.live.read)
+	//查看礼物列表
+	router.get('/api/gift/list', controller.api.gift.list)
 
 	//socket路由配置测试
 	// io.of('/').route('test',io.controller.nps.test)
 	io.of('/').route('joinLive', io.controller.live.joinLive)
 	io.of('/').route('leaveLive', io.controller.live.leaveLive)
 	io.of('/').route('comment', io.controller.live.comment)
-	
+	io.of('/').route('gift', io.controller.live.gift)
+
+
 };
