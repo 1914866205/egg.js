@@ -36,7 +36,7 @@ class GiftController extends Controller {
                             const image =
                                 item.dataValues.image.indexOf('/') === 0
                                     ? item.dataValues.image
-                                    : 'https://niit-soft.oss-cn-hangzhou.aliyuncs.com/gift/' +
+                                    : 'https://nttbucket.oss-cn-beijing.aliyuncs.com/gift/' +
                                       item.dataValues.image
                             return `
         <h2 class="table-avatar">
@@ -131,7 +131,7 @@ class GiftController extends Controller {
         if (!data) {
             return await ctx.pageFail('该记录不存在')
         }
-        data.image = 'https://niit-soft.oss-cn-hangzhou.aliyuncs.com/gift/' + data.image
+        data.image = 'https://nttbucket.oss-cn-beijing.aliyuncs.com/gift/' + data.image
         data = JSON.parse(JSON.stringify(data))
         await ctx.renderTemplate({
             id: ctx.params.id,
