@@ -34,6 +34,7 @@ class UserService extends Service {
 
     // 指定用户的粉丝数
     async getFensCount(user_id) {
+		//直接返回指定的对象的属性
         return await this.app.model.Follow.count({
             where: {
                 follow_id: user_id

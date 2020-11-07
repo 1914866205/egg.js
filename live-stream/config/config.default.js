@@ -146,6 +146,13 @@ module.exports = (appInfo) => {
 		},
 	};
 	//session配置
+	/**
+	 * 服务器可以设置或读取Cookies中包含信息，借此维护用户跟服务器会话中的状态。
+Cookie（复数形态：Cookies），是指某些网站为了辨别用户身份、进行session跟踪而储存在用户本地终端上的数据（通常经过加密）。
+Cookie是由服务端生成的，发送给客户端（通常是浏览器）的。
+	 * Session代表服务器与浏览器的一次会话过程，这个过程是连续的，也可以时断时续的。Session是一种服务器端的机制，Session 对象用来存储特定用户会话所需的信息。
+       Session由服务端生成，保存在服务器的内存、缓存、硬盘或数据库中。
+	 */
 	config.session = {
 		renew: true,
 		key: 'EGG_SESS',
