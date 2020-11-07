@@ -1,61 +1,66 @@
 {
-  "name": "live-stream",
-  "version": "1.0.0",
-  "description": "stream",
-  "private": true,
-  "egg": {
-    "declarations": true
-  },
-  "dependencies": {
-    "@alicloud/sms-sdk": "^1.1.6",
-    "await-stream-ready": "^1.0.1",
-    "crypto": "^1.0.1",
-    "dayjs": "^1.9.4",
-    "egg": "^2.15.1",
-    "egg-cors": "^2.2.3",
-    "egg-jwt": "^3.1.7",
-    "egg-redis": "^2.4.0",
-    "egg-scripts": "^2.11.0",
-    "egg-sequelize": "^6.0.0",
-    "egg-socket.io": "^4.1.6",
-    "egg-valparams": "^1.4.3",
-    "md5": "2.3.0",
-    "mysql2": "^2.2.5",
-    "node-media-server": "^2.2.4",
-    "stream-wormhole": "^1.1.0"
-  },
-  "devDependencies": {
-    "autod": "^3.0.1",
-    "autod-egg": "^1.1.0",
-    "egg-bin": "^4.11.0",
-    "egg-ci": "^1.11.0",
-    "egg-mock": "^3.21.0",
-    "eslint": "^5.13.0",
-    "eslint-config-egg": "^7.1.0",
-    "sequelize-cli": "^6.2.0"
-  },
-  "engines": {
-    "node": ">=10.0.0"
-  },
-  "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-live-stream --sticky",
-    "stop": "egg-scripts stop --title=egg-server-live-stream",
-    "dev": "egg-bin dev --sticky",
-    "debug": "egg-bin debug",
-    "test": "npm run lint -- --fix && npm run test-local",
-    "test-local": "egg-bin test",
-    "cov": "egg-bin cov",
-    "lint": "eslint .",
-    "ci": "npm run lint && npm run cov",
-    "autod": "autod"
-  },
-  "ci": {
-    "version": "10"
-  },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
-  "author": "ntt",
-  "license": "MIT"
+	"name": "live-stream",
+	"version": "1.0.0",
+	"description": "stream",
+	"private": true,
+	"egg": {
+		"declarations": true
+	},
+	"dependencies": {
+		"@alicloud/sms-sdk": "^1.1.6",
+		"await-stream-ready": "^1.0.1",
+		"crypto": "^1.0.1",
+		"dayjs": "^1.9.4",
+		"egg": "^2.15.1",
+		"egg-cors": "^2.2.3",
+		"egg-jwt": "^3.1.7",
+		"egg-redis": "^2.4.0",
+		"egg-scripts": "^2.11.0",
+		"egg-sequelize": "^6.0.0",
+		"egg-socket.io": "^4.1.6",
+		"egg-valparams": "^1.4.3",
+		"egg-view-nunjucks": "^2.2.0",
+		"md5": "2.3.0",
+		"mysql2": "^2.2.5",
+		"node-media-server": "^2.2.4",
+		"stream-wormhole": "^1.1.0",
+		"ms": "^2.1.2",
+		"egg-full-wechat-pay": "^1.0.0",
+		"egg-tenpay": "^1.0.1",
+		"tenpay": "^2.1.18"
+	},
+	"devDependencies": {
+		"autod": "^3.0.1",
+		"autod-egg": "^1.1.0",
+		"egg-bin": "^4.11.0",
+		"egg-ci": "^1.11.0",
+		"egg-mock": "^3.21.0",
+		"eslint": "^5.13.0",
+		"eslint-config-egg": "^7.1.0",
+		"sequelize-cli": "^6.2.0"
+	},
+	"engines": {
+		"node": ">=10.0.0"
+	},
+	"scripts": {
+		"start": "egg-scripts start --daemon --title=egg-server-live-stream --sticky",
+		"stop": "egg-scripts stop --title=egg-server-live-stream",
+		"dev": "egg-bin dev --sticky",
+		"debug": "egg-bin debug",
+		"test": "npm run lint -- --fix && npm run test-local",
+		"test-local": "egg-bin test",
+		"cov": "egg-bin cov",
+		"lint": "eslint .",
+		"ci": "npm run lint && npm run cov",
+		"autod": "autod"
+	},
+	"ci": {
+		"version": "10"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"author": "ntt",
+	"license": "MIT"
 }

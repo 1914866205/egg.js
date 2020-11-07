@@ -1,0 +1,72 @@
+<div class="header">
+  <!-- Logo -->
+  <div class="header-left">
+    <a href="/admin" class="logo">
+     <h2 class="text-white mt-2">LIVE-SHOW</h2>
+    </a>
+    <a href="/admin" class="logo logo-small">
+      <img
+        src="/public/assets/img/logo-small.png"
+        alt="Logo"
+        width="30"
+        height="30"
+      />
+    </a>
+  </div>
+  <!-- /Logo -->
+
+
+  <a href="javascript:void(0);" id="toggle_btn">
+    <i class="fe fe-text-align-left"></i>
+  </a>
+
+
+  <!-- <div class="top-nav-search">
+      <form>
+          <input type="text" class="form-control" placeholder="搜索直播间">
+          <button class="btn" type="submit"><i class="fa fa-search"></i></button>
+      </form>
+  </div> -->
+
+
+  <!-- Mobile Menu Toggle -->
+  <a class="mobile_btn" id="mobile_btn">
+    <i class="fa fa-bars"></i>
+  </a>
+  <!-- /Mobile Menu Toggle -->
+
+
+  <!-- Header Right Menu -->
+  <ul class="nav user-menu">
+    <!-- User Menu -->
+    <li class="nav-item dropdown has-arrow">
+      <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+        <span class="user-img"
+          ><img
+            class="rounded-circle"
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROvNcbxQJPwp5aJnyjJhGoNn-gbsODe7b0Vw&usqp=CAU"
+            width="31"
+        /></span>
+      </a>
+      {% if ctx.session.auth %}
+      <div class="dropdown-menu">
+        <div class="user-header">
+          <div class="avatar avatar-sm">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcROvNcbxQJPwp5aJnyjJhGoNn-gbsODe7b0Vw&usqp=CAU"
+              class="avatar-img rounded-circle"
+            />
+          </div>
+          <div class="user-text">
+            <h6>{{ctx.session.auth.username}}</h6>
+            <p class="text-muted mb-0">超级管理员</p>
+          </div>
+        </div>
+        <a class="dropdown-item" href="/admin/logout">退出登录</a>
+      </div>
+      {% endif %}
+    </li>
+    <!-- /User Menu -->
+  </ul>
+  <!-- /Header Right Menu -->
+</div>

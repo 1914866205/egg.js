@@ -1,0 +1,14 @@
+{% extends "admin/layout/main.html" %}
+{% block title %}404{% endblock %}
+{% block body %}
+<div class="error-page">  
+    <!-- Main Wrapper -->
+    <div class="main-wrapper">
+        <div class="error-box">
+            <h1>{{ code }}</h1>
+            <h3 class="h2 mb-3"><i class="fa fa-warning"></i> {{ data }} </h3>
+            <a href="/admin" class="btn btn-primary">返回后台首页</a>
+        </div>
+    </div>
+</body>
+{% endblock %}

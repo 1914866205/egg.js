@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    <title>{% block title %}后台{% endblock %} - 直播后台 </title>
+
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="/public/assets/img/favicon.png">
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+
+    <!-- Fontawesome CSS -->
+    <link rel="stylesheet" href="/public/assets/css/font-awesome.min.css">
+
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="/public/assets/css/style.css">
+
+
+    <!--[if lt IE 9]>
+      <script src="/public/assets/js/html5shiv.min.js"></script>
+      <script src="/public/assets/js/respond.min.js"></script>
+        <![endif]-->
+    {% block css %}{% endblock %}
+    <!-- jQuery -->
+    <script src="/public/assets/js/jquery-3.2.1.min.js"></script>
+
+
+    <!-- Bootstrap Core JS -->
+    <script src="/public/assets/js/popper.min.js"></script>
+    <script src="http://cdn.bootstrapmb.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+
+    <!-- Custom JS -->
+    <script src="/public/assets/js/script.js"></script>
+    <script src="/public/assets/js/vue.min.js"></script>
+    <script src="/public/assets/js/vue.components.js"></script>
+</head>
+
+
+<body>
+
+
+    <div id="vueapp">
+        {% block body %}{% endblock %}
+        <confirm ref="confirm"></confirm>
+        <toast ref="toast"></toast>
+    </div>
+    <!-- /Main Wrapper -->
+
+
+    {% block js %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,95 @@
+<div class="card">
+    <div class="card-body">
+        {% if form %}
+        <form v-cloak action="{{ form.action }}" method="{{ form.method if form.method else 'POST' }}">
+            {% for item in form.fields %}
+            <div class="form-group row">
+                <label class="col-form-label col-md-2">{{item.label}}</label>
+                <div class="col-md-10">
+                    {% if item.name === 'coin' %}
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">￥</span>
+                        </div>
+                        <input class="form-control" type="{{item.type}}" name="{{item.name}}" v-model="form.{{ item.name }}">
+                    </div>
+                    {% else %}
+                        {% if item.type === 'file' %}
+                        <input type="file" name="{{item.name}}" class="form-control" @change="fileUpload($event,'{{item.name}}')">
+                        <img v-if="form['{{item.name}}']" :src="form['{{item.name}}']" class="avatar-lg border rounded p-1 mt-2">
+                        {% else %}
+                        <input type="{{item.type}}" name="{{item.name}}" class="form-control"
+                        placeholder="{{item.placeholder}}" v-model="form.{{ item.name }}">
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
+            <div class="text-right mt-3"> <button type="submit" class="btn btn-primary" @click.stop.prevent="submit">提
+                    交</button>
+            </div>
+        </form>
+        {% endif %}
+
+
+    </div>
+</div>
+<script>
+    var Vueapp = new Vue({
+        el: '#vueapp',
+        data: function () {
+            return {
+                form: {
+                    {% for item in form.fields %} {{ item.name }}: "{{ form.data[item.name] if form.data[item.name] else item.default }}",{% endfor %}
+                }
+            }
+        },
+        methods: {
+            fileUpload:function(event,name){
+                var _t = this
+                // 上传文件
+                let file = event.target.files
+                let formData = new FormData()
+                formData.append('file', file[0])
+                $.ajax({
+                    url:"/admin/upload?_csrf={{ctx.csrf|safe}}",
+                    type:'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success:function(res){
+                        _t.form[name] = res.data.url
+                        _t.$refs.toast.show({
+                            msg: '上传成功',
+                            type:"success"
+                        })
+                    }
+                })
+            },
+            submit: function () {
+                var _t = this
+                $.ajax({
+                    type: "{{ form.method if form.method else 'POST' }}",
+                    contentType: "application/json;charset=UTF-8",
+                    url: "{{ form.action }}?_csrf={{ctx.csrf|safe}}",
+                    data: JSON.stringify(this.form),
+                    success: function (result) {
+                        _t.$refs.toast.show({
+                            msg: "{{ '修改' if id else '创建' }}成功",
+                            type:"success",
+                            success:function(){
+                                window.location.href = "{{successUrl}}"
+                            },
+                            delay:1000
+                        })
+                    },
+                    error: function (e) {
+                        _t.$refs.toast.show({
+                            msg: e.responseJSON.data
+                        })
+                    }
+                });
+            }
+        },
+    })
+</script>

@@ -1,0 +1,100 @@
+{% extends "../layout/main.html" %} {% block title %} 后台登录 {% endblock %}
+{% block body %}
+<div class="main-wrapper login-body">
+  <div class="login-wrapper">
+    <div class="container">
+      <div class="loginbox">
+        <div class="login-left">
+          <h1 class="text-white">LIVE-SHOW</h1>
+        </div>
+        <div class="login-right">
+          <div class="login-right-wrap">
+            <h1>登 录</h1>
+            <p class="account-subtitle">Access to our dashboard</p>
+
+
+            <!-- Form -->
+            <form>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="输入用户名..."
+                  v-model="form.username"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control"
+                  type="text"
+                  placeholder="输入密码..."
+                  v-model="form.password"
+                />
+              </div>
+              <div class="form-group">
+                <button
+                  class="btn btn-primary btn-block"
+                  type="submit"
+                  @click.stop.prevent="submit"
+                >
+                  登 录
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block js %}
+<script>
+  new Vue({
+      el: '#vueapp',
+      data:function(){
+          return {
+              form:{
+                  username:"",
+                  password:""
+              }
+          }
+      },
+      mounted() {
+        //   {% if toast %}
+        //       this.$refs.toast.show({
+        //           msg: "{{toast.msg}}",
+        //           type: "{{toast.type}}",
+        //       })
+        //   {% endif %}
+      },
+      methods: {
+          submit:function(){
+              var _t = this
+              console.log("登录方法")
+              $.ajax({
+                  type: "POST",
+                  contentType: "application/json;charset=UTF-8",
+                  url: "/admin/loginevent?_csrf={{ctx.csrf|safe}}",
+                  data: JSON.stringify(this.form),
+                  success: function (result) {
+                      _t.$refs.toast.show({
+                          msg: "登录成功",
+                          type:"success",
+                          success:function(){
+                              window.location.href = "/admin"
+                          },
+                          delay:1000
+                      })
+                  },
+                  error: function (e) {
+                      _t.$refs.toast.show({
+                          msg: e.responseJSON.data
+                      })
+                  }
+              });
+          }
+      },
+  })
+</script>
+{% endblock %}
+
