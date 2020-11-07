@@ -46,6 +46,7 @@ class CommonController extends Controller {
     const { protocol, host } = this.ctx.request
     let url = path
       .join('/public/uploads', dirname, filename)
+	  // 转义 |
       .replace(/\\|\//g, '/')
     this.ctx.apiSuccess({ url })
   }

@@ -2,6 +2,7 @@
 
 
 const Controller = require('egg').Controller
+//定义基本的属性
 const fields = [
     {
         label: '用户名',
@@ -89,16 +90,18 @@ class UserController extends Controller {
     }
 
     async create() {
+		//获取上下文
         const { ctx, app } = this
+		//创建表单提交 
         await ctx.renderTemplate({
             title: '创建用户',
             tempType: 'form',
             form: {
-                //提交地址
+                //提交地址 表单提交路径
                 action: '/admin/user/insert',
                 fields,
             },
-            // 新增成功跳转路径
+            // 新增成功跳转路径   页面跳转路径
             successUrl: '/admin/user',
         })
     }
@@ -149,6 +152,8 @@ class UserController extends Controller {
     async edit() {
         const { ctx, app } = this
         const id = ctx.params.id
+		//  直接精确到指定实体或属性  根据id查找
+		
         let data = await app.model.User.findOne({
             where: {
                 id
