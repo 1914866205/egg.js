@@ -16,7 +16,6 @@
                         </div>
                         <input class="form-control" type="{{item.type}}" name="{{item.name}}" v-model="form.{{ item.name }}">
                     </div>
-					
                     {% else %}
                         {% if item.type === 'file' %}
                         <input type="file" name="{{item.name}}" class="form-control" @change="fileUpload($event,'{{item.name}}')">
