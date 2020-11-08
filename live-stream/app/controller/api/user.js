@@ -127,7 +127,7 @@ class UserController extends Controller {
 			ctx.throw(400, '该用户不存在')
 		}
 		// 验证密码
-		await ctx.checkPassword(password, user.password)
+		// await ctx.checkPassword(password, user.password)
 		user = JSON.parse(JSON.stringify(user))
 		console.log(user)
 		// 生成token

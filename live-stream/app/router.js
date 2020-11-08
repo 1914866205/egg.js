@@ -20,6 +20,8 @@ module.exports = app => {
 	router.post('/api/sendcode', controller.api.sms.sendCode)
 	//第三方登录 微信登录试用版
 	router.post('/api/otherlogin', controller.api.user.otherLogin)
+	//上传图片
+	router.post('/api/upload', controller.api.common.upload)
 
 	//获取用户信息
 	router.post('/api/info', controller.api.user.info)

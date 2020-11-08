@@ -14,7 +14,7 @@ class LiveController extends Controller {
 		//当前连接
 		const socket = ctx.socket
 		const id = socket.id
-		console.log("npsController驗證用戶token")
+		console.log("npsController验证用户token")
 		//用户验证
 		if (!token) {
 			//通知前端，您没有访问该接口的权限
@@ -60,7 +60,7 @@ class LiveController extends Controller {
 			service,
 			helper
 		} = this
-		console.log("joinLive被訪問")
+		console.log("joinLive被访问")
 		const nps = app.io.of('/')
 		//接收参数
 		const message = ctx.args[0] || {}
