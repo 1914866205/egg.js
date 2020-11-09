@@ -13,6 +13,7 @@ const dayjs = require('dayjs');
 class CommonController extends Controller {
 	// 上传文件
 	async upload() {
+		console.log("上传文件接口被访问")
 		const stream = await this.ctx.getFileStream();
 		// 基础目录
 		const uploadBasePath = 'app/public/uploads'

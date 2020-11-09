@@ -346,7 +346,7 @@ class LiveController extends Controller {
 			username: user.nickname || user.username,
 			gift_name: gift.name,
 			gift_image: gift.image,
-			gift_icon: gift.coin,
+			gift_coin: gift.coin,
 			num: 1
 		})
 
